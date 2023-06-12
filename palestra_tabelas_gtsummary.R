@@ -51,10 +51,10 @@ tab_descritiva <- dados %>%
     "Mediana do público pagante" = median(pagante, na.rm = TRUE),
     "Desvio padrão do público pagante" = sd(pagante, na.rm = TRUE),
     "Máximo do público pagante" = max(pagante, na.rm = TRUE),
-    .by = clubem) # Não utilizar o View com operador pipe
-
+    .by = clubem) %>% # Não utilizar o View com operador pipe 
+   rows_delete(tibble(clubem = 1:6))
 ## Utilizando o {gt}
-
+View(tab_descritiva)
 tab_descritiva %>%
   gt()
 
@@ -225,7 +225,6 @@ tab_descritiva %>%
              suffixing = TRUE,
              currency = "BRL") %>%
   tab_options(table.width = pct(100)) %>%
-  #sub_missing(rows = everything()) %>%
   cols_label(clubem = "Clubes") %>%
-  opt_stylize(style = 1) # Cada número tem um estilo diferente
+  opt_stylize(style = 2) # Cada número tem um estilo diferente
 
