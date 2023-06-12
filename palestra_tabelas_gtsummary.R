@@ -280,4 +280,4 @@ tab_descritiva %>%
              currency = "BRL") %>%
   tab_options(table.width = pct(100)) %>%
   cols_label(clubem = "Clubes") %>%
-  gtsave(filename = "tab_descritiva.png", expand = 16)
+  gtsave(filename = "tab_descritiva.pdf") #png
