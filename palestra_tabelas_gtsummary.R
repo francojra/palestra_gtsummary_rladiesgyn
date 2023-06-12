@@ -204,5 +204,5 @@ tab_descritiva %>%
     table.width = pct(100), # Alterar a largura da tabela
     # pct(100) ocupa 100% do tamanho disponível
     table.background.color = "#DCDCDC", # Altera a cor interna da tabela
-    table.font.color = "blue" # Altera a cor da fonte
-  )
+    table.font.color = "blue", # Altera a cor da fonte
+    table.font.size = 12)
