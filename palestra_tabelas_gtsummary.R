@@ -66,8 +66,7 @@ tab_descritiva %>%
   gt() %>%
   tab_header(
     title = "Público Pagante Campeonato Brasileiro",
-    subtitle = "Série A - 2022"
-  )
+    subtitle = "Série A - 2022")
 
 ## Utilizando o pacote RMarkdown dentro do {gt}
 
@@ -75,8 +74,7 @@ tab_descritiva %>%
   gt() %>%
   tab_header(
     title = md("**Público Pagante Campeonato Brasileiro**"),
-    subtitle = "Série A - 2022"
-  )
+    subtitle = "Série A - 2022")
 
 ## Adicionando fontes
 
@@ -84,6 +82,17 @@ tab_descritiva %>%
   gt() %>%
   tab_header(
     title = md("**Público Pagante Campeonato Brasileiro**"),
-    subtitle = "Série A - 2022"
-  ) %>%
+    subtitle = "Série A - 2022") %>%
   tab_source_note(md("**Fonte: CBF(2022)**"))
+
+## Adicionando notas de rodapé
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = md("**Público Pagante Campeonato Brasileiro**"),
+    subtitle = "Série A - 2022") %>%
+  tab_source_note(
+    source_note = "Fonte: CBF(2022)") %>%
+  tab_footnote(
+    footnote = "Raspado do site: www.srgoool.com.br")
