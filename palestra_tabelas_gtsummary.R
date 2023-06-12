@@ -252,5 +252,8 @@ tab_descritiva %>%
     
     #### Adicionar uma página de busca
     
-    use_search = TRUE
-  )
+    use_search = TRUE,
+    
+    #### Adicionar filtros nas células
+    
+    use_filters = TRUE)
