@@ -177,7 +177,7 @@ tab_descritiva %>%
     style = cell_fill(color = "#BDB76B"),
     pattern = "SP")
 
-  #### Chamando atenção para os clubes que tenham a renda menor que renda
-  #### média do flamengo
+  #### Chamando atenção para os clubes que tenham a renda menor que 
+  #### a renda mínima do flamengo
 
 
