@@ -175,9 +175,34 @@ tab_descritiva %>%
   
   tab_style_body(
     style = cell_fill(color = "#BDB76B"),
-    pattern = "SP")
+    pattern = "SP",
 
   #### Chamando atenção para os clubes que tenham a renda menor que 
   #### a renda mínima do flamengo
 
+    columns = 3, # Utiliza apenas coluna 3 da média
+    fn = function(x) x <= 33780)
 
+## Alterando o estilo da tabela
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = md("**Público Pagante Campeonato Brasileiro**"),
+    subtitle = "Série A - 2022") %>%
+  tab_source_note(
+    source_note = "Fonte: CBF(2022)") %>%
+  tab_footnote(
+    footnote = "Raspado do site: www.srgoool.com.br") %>%
+  fmt_currency(columns = 2:6, # Utiliza as colunas numéricas
+             decimals = 2, 
+             dec_mark = ",",
+             sep_mark = ".",
+             suffixing = TRUE,
+             currency = "BRL") %>%
+  tab_options(
+    table.width = pct(100), # Alterar a largura da tabela
+    # pct(100) ocupa 100% do tamanho disponível
+    table.background.color = "#DCDCDC", # Altera a cor interna da tabela
+    table.font.color = "blue" # Altera a cor da fonte
+  )
