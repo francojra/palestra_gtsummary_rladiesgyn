@@ -96,3 +96,88 @@ tab_descritiva %>%
     source_note = "Fonte: CBF(2022)") %>%
   tab_footnote(
     footnote = "Raspado do site: www.srgoool.com.br")
+
+## Formatando os valores da tabela
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = md("**Público Pagante Campeonato Brasileiro**"),
+    subtitle = "Série A - 2022") %>%
+  tab_source_note(
+    source_note = "Fonte: CBF(2022)") %>%
+  tab_footnote(
+    footnote = "Raspado do site: www.srgoool.com.br") %>%
+  fmt_number(columns = 2:6, # Utiliza as colunas numéricas
+             decimals = 2, 
+             dec_mark = ",",
+             sep_mark = ".",
+             suffixing = TRUE) # Resume os valores indicando k ou m
+# Ou podemos utilizar suffixing = "M" para o padrão português
+
+## Colocar os valores em formato de dolar ou reais
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = md("**Público Pagante Campeonato Brasileiro**"),
+    subtitle = "Série A - 2022") %>%
+  tab_source_note(
+    source_note = "Fonte: CBF(2022)") %>%
+  tab_footnote(
+    footnote = "Raspado do site: www.srgoool.com.br") %>%
+  fmt_currency(columns = 2:6, # Utiliza as colunas numéricas
+             decimals = 2, 
+             dec_mark = ",",
+             sep_mark = ".",
+             suffixing = TRUE,
+             currency = "BRL")
+
+## Substituindo valores dentro de uma célula
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = md("**Público Pagante Campeonato Brasileiro**"),
+    subtitle = "Série A - 2022") %>%
+  tab_source_note(
+    source_note = "Fonte: CBF(2022)") %>%
+  tab_footnote(
+    footnote = "Raspado do site: www.srgoool.com.br") %>%
+  fmt_currency(columns = 2:6, # Utiliza as colunas numéricas
+             decimals = 2, 
+             dec_mark = ",",
+             sep_mark = ".",
+             suffixing = TRUE,
+             currency = "BRL") %>%
+  sub_values(pattern = "Fluminense-RJ",
+             replacement = "Fluminense")
+
+## Adicionando highlight em algumas células
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = md("**Público Pagante Campeonato Brasileiro**"),
+    subtitle = "Série A - 2022") %>%
+  tab_source_note(
+    source_note = "Fonte: CBF(2022)") %>%
+  tab_footnote(
+    footnote = "Raspado do site: www.srgoool.com.br") %>%
+  fmt_currency(columns = 2:6, # Utiliza as colunas numéricas
+             decimals = 2, 
+             dec_mark = ",",
+             sep_mark = ".",
+             suffixing = TRUE,
+             currency = "BRL") %>%
+  
+  #### Chamando atenção para os clubes de SP
+  
+  tab_style_body(
+    style = cell_fill(color = "#BDB76B"),
+    pattern = "SP")
+
+  #### Chamando atenção para os clubes que tenham a renda menor que renda
+  #### média do flamengo
+
+
