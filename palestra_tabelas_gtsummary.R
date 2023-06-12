@@ -57,3 +57,23 @@ tab_descritiva <- dados %>%
 
 tab_descritiva %>%
   gt()
+
+# Verbos do {gt} ---------------------------------------------------------------------------------------------------------------------------
+
+## Editando títulos
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = "Público Pagante Campeonato Brasileiro",
+    subtitle = "Série A - 2022"
+  )
+
+### Utilizando o pacote RMarkdown dentro do {gt}
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = md("**Público Pagante Campeonato Brasileiro**"),
+    subtitle = "Série A - 2022"
+  )
