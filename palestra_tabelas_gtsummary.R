@@ -25,6 +25,7 @@
 
 install.packages("gt") # Conhecido por ser o ggplot das tabelas.
 install.packages("gtsummary")
+install.packages("webshot2") # Salvar tabela em formato png
 install.packages("devtools")
 devtools::install_github("BaruqueRodrigues/renda.brasileirao")
 
@@ -51,10 +52,12 @@ tab_descritiva <- dados %>%
     "Mediana do público pagante" = median(pagante, na.rm = TRUE),
     "Desvio padrão do público pagante" = sd(pagante, na.rm = TRUE),
     "Máximo do público pagante" = max(pagante, na.rm = TRUE),
-    .by = clubem) %>% # Não utilizar o View com operador pipe 
-   rows_delete(tibble(clubem = 1:6))
+    .by = clubem) 
+
 ## Utilizando o {gt}
+
 View(tab_descritiva)
+
 tab_descritiva %>%
   gt()
 
@@ -256,4 +259,25 @@ tab_descritiva %>%
     
     #### Adicionar filtros nas células
     
-    use_filters = TRUE)
+    use_filters = TRUE) 
+
+## Salvando a tabela
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = md("**Público Pagante Campeonato Brasileiro**"),
+    subtitle = "Série A - 2022") %>%
+  tab_source_note(
+    source_note = "Fonte: CBF(2022)") %>%
+  tab_footnote(
+    footnote = "Raspado do site: www.srgoool.com.br") %>%
+  fmt_currency(columns = 2:6, # Utiliza as colunas numéricas
+             decimals = 2, 
+             dec_mark = ",",
+             sep_mark = ".",
+             suffixing = TRUE,
+             currency = "BRL") %>%
+  tab_options(table.width = pct(100)) %>%
+  cols_label(clubem = "Clubes") %>%
+  gtsave(filename = "tab_descritiva.png", expand = 16)
