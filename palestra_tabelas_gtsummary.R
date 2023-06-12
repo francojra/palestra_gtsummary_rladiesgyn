@@ -51,6 +51,9 @@ tab_descritiva <- dados %>%
     "Mediana do público pagante" = median(pagante, na.rm = TRUE),
     "Desvio padrão do público pagante" = sd(pagante, na.rm = TRUE),
     "Máximo do público pagante" = max(pagante, na.rm = TRUE),
-    .by = clubem
-  ) %>%
-View()
+    .by = clubem) # Não utilizar o View com operador pipe
+
+## Utilizando o {gt}
+
+tab_descritiva %>%
+  gt()
