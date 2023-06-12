@@ -226,5 +226,31 @@ tab_descritiva %>%
              currency = "BRL") %>%
   tab_options(table.width = pct(100)) %>%
   cols_label(clubem = "Clubes") %>%
-  opt_stylize(style = 2) # Cada número tem um estilo diferente
+  opt_stylize(style = 2, color = "gray") # Cada número tem um estilo diferente
 
+## Adicionando elementos interativos
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = md("**Público Pagante Campeonato Brasileiro**"),
+    subtitle = "Série A - 2022") %>%
+  tab_source_note(
+    source_note = "Fonte: CBF(2022)") %>%
+  tab_footnote(
+    footnote = "Raspado do site: www.srgoool.com.br") %>%
+  fmt_currency(columns = 2:6, # Utiliza as colunas numéricas
+             decimals = 2, 
+             dec_mark = ",",
+             sep_mark = ".",
+             suffixing = TRUE,
+             currency = "BRL") %>%
+  tab_options(table.width = pct(100)) %>%
+  cols_label(clubem = "Clubes") %>%
+  opt_interactive(
+    use_pagination = TRUE, page_size_default = 5,
+    
+    #### Adicionar uma página de busca
+    
+    use_search = TRUE
+  )
