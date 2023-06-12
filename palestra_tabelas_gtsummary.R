@@ -30,8 +30,27 @@ devtools::install_github("BaruqueRodrigues/renda.brasileirao")
 
 # Fluxo de trabalho no {gt} ----------------------------------------------------------------------------------------------------------------
 
+## Carregar pacotes
+
 library(dplyr)
 library(gt)
 library(rendas.brasileirao)
 
-dados <- renda.brasileirao::
+## Carregar dados
+
+dados <- rendas.brasileirao::baixa_rendas_brasileirao(1:38, 2022)
+# Seleciona rodadas de 1 a 38 para o ano de 2022.
+View(dados)
+
+## Criar tabela descritiva
+
+tab_descritiva <- dados %>%
+  dplyr::summarise(
+    "Mínimo do público pagante" = min(pagante, na.rm = TRUE),
+    "Média do público pagante" = mean(pagante, na.rm = TRUE),
+    "Mediana do público pagante" = median(pagante, na.rm = TRUE),
+    "Desvio padrão do público pagante" = sd(pagante, na.rm = TRUE),
+    "Máximo do público pagante" = max(pagante, na.rm = TRUE),
+    .by = clubem
+  ) %>%
+View()
