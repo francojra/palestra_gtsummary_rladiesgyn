@@ -69,7 +69,7 @@ tab_descritiva %>%
     subtitle = "Série A - 2022"
   )
 
-### Utilizando o pacote RMarkdown dentro do {gt}
+## Utilizando o pacote RMarkdown dentro do {gt}
 
 tab_descritiva %>%
   gt() %>%
@@ -77,3 +77,13 @@ tab_descritiva %>%
     title = md("**Público Pagante Campeonato Brasileiro**"),
     subtitle = "Série A - 2022"
   )
+
+## Adicionando fontes
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = md("**Público Pagante Campeonato Brasileiro**"),
+    subtitle = "Série A - 2022"
+  ) %>%
+  tab_source_note(md("**Fonte: CBF(2022)**"))
