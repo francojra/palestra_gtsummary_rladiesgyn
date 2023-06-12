@@ -206,3 +206,26 @@ tab_descritiva %>%
     table.background.color = "#DCDCDC", # Altera a cor interna da tabela
     table.font.color = "blue", # Altera a cor da fonte
     table.font.size = 12)
+
+## Alterar o estilo da tabela para valores pré-definidos
+
+tab_descritiva %>%
+  gt() %>%
+  tab_header(
+    title = md("**Público Pagante Campeonato Brasileiro**"),
+    subtitle = "Série A - 2022") %>%
+  tab_source_note(
+    source_note = "Fonte: CBF(2022)") %>%
+  tab_footnote(
+    footnote = "Raspado do site: www.srgoool.com.br") %>%
+  fmt_currency(columns = 2:6, # Utiliza as colunas numéricas
+             decimals = 2, 
+             dec_mark = ",",
+             sep_mark = ".",
+             suffixing = TRUE,
+             currency = "BRL") %>%
+  tab_options(table.width = pct(100)) %>%
+  #sub_missing(rows = everything()) %>%
+  cols_label(clubem = "Clubes") %>%
+  opt_stylize(style = 1) # Cada número tem um estilo diferente
+
