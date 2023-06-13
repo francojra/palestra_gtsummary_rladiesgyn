@@ -40,6 +40,7 @@ library(gtsummary)
 library(webshot2)
 library(rendas.brasileirao)
 library(gapminder)
+library(gtExtras)
 
 ## Carregar dados
 
@@ -342,3 +343,22 @@ tab_gap_asia %>%
   cols_label(decada = "Década", country = "Países") %>%
   opt_interactive(use_pagination = TRUE, page_size_default = 6) %>%
   opt_stylize(style = 3)
+
+# Levando as tabelas a outro nível {gtExtras} ----------------------------------------------------------------------------------------------
+
+### Produz tabelas elegantes inspiradas em grandes sites.
+
+tab_gap_asia1 <- tab_gap_asia %>%
+  gt() %>%
+  tab_header(
+    title = md("**Expectativa de vida**"),
+    subtitle = md("**Continente da Ásia**")) %>%
+  tab_source_note(
+    source_note = "Fonte dos dados: Pacote {gapminder} do R (2023).") %>%
+  fmt_number(columns = 3, decimals = 2,
+             dec_mark = ",", sep_mark = ".") %>%
+  tab_options(table.width = pct(100)) %>%
+  cols_label(decada = "Década", country = "Países")
+
+tab_gap_asia1 %>%
+  gtExtras::gt_theme_dark() 
