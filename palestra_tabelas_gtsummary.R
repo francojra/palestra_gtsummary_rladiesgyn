@@ -310,9 +310,21 @@ tab_gap %>%
     title = md("**Expectativa de vida**"),
     subtitle = md("**Por década e continente**")) %>%
   tab_source_note(
-    source_note = "Fonte dos dados: Pacote {gapminder} do R.") %>%
+    source_note = "Fonte dos dados: Pacote {gapminder} do R (2023).") %>%
   fmt_number(columns = 3, decimals = 2,
              dec_mark = ",", sep_mark = ".") %>%
   tab_options(table.width = pct(100)) %>%
   cols_label(decada = "Década") %>%
   opt_interactive(use_pagination = TRUE, page_size_default = 6)
+
+## Expectativa de vida para os países da Asia
+
+tab_gap_asia <- gapminder %>%
+  dplyr::select(continent, country, year, lifeExp) %>%
+  dplyr::filter(continent == "Asia") %>%
+  dplyr::mutate(decada = year - (year %% 10)) %>%
+  dplyr::summarise(    
+    "Média expectativa de vida" = mean(lifeExp, na.rm = TRUE),
+    .by = c(country, decada)) 
+
+View(tab_gap_asia)
