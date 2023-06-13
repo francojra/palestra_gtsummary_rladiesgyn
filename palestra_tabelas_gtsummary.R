@@ -314,4 +314,5 @@ tab_gap %>%
   fmt_number(columns = 3, decimals = 2,
              dec_mark = ",", sep_mark = ".") %>%
   tab_options(table.width = pct(100)) %>%
-  cols_label(decada = "Década")
+  cols_label(decada = "Década") %>%
+  opt_interactive(use_pagination = TRUE, page_size_default = 6)
