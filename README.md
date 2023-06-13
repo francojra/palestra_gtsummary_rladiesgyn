@@ -20,4 +20,5 @@
 - Fluxo de trabalho no {gt};
 - Verbos do {gt};
 - Revisão;
-- Levando as tabelas a outro nível {gtExtras}.
+- Levando as tabelas a outro nível {gtExtras};
+- Exportar tabela gt de análises estatísticas.
