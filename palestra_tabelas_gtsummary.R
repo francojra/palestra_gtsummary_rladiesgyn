@@ -328,3 +328,16 @@ tab_gap_asia <- gapminder %>%
     .by = c(country, decada)) 
 
 View(tab_gap_asia)
+
+tab_gap_asia %>%
+  gt() %>%
+  tab_header(
+    title = md("**Expectativa de vida**"),
+    subtitle = md("**Continente da Ásia**")) %>%
+  tab_source_note(
+    source_note = "Fonte dos dados: Pacote {gapminder} do R (2023).") %>%
+  fmt_number(columns = 3, decimals = 2,
+             dec_mark = ",", sep_mark = ".") %>%
+  tab_options(table.width = pct(100)) %>%
+  cols_label(decada = "Década", country = "Países") %>%
+  opt_interactive(use_pagination = TRUE, page_size_default = 6)
