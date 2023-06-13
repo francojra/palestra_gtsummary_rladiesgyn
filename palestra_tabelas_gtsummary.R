@@ -308,9 +308,9 @@ tab_gap %>%
   gt() %>%
   tab_header(
     title = md("**Expectativa de vida**"),
-    subtitle = "Por década e continente") %>%
+    subtitle = md("**Por década e continente**")) %>%
   tab_source_note(
-    source_note = "Fonte dos dados: Pacote {gapminder} do R") %>%
+    source_note = "Fonte dos dados: Pacote {gapminder} do R.") %>%
   fmt_currency(columns = 3, # Utiliza as colunas numéricas
              decimals = 2, 
              dec_mark = ",",
