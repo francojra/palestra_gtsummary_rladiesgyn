@@ -311,9 +311,7 @@ tab_gap %>%
     subtitle = md("**Por década e continente**")) %>%
   tab_source_note(
     source_note = "Fonte dos dados: Pacote {gapminder} do R.") %>%
-  fmt_currency(columns = 3, # Utiliza as colunas numéricas
-             decimals = 2, 
-             dec_mark = ",",
-             sep_mark = ".") %>%
+  fmt_number(columns = 3, decimals = 2,
+             dec_mark = ",", sep_mark = ".") %>%
   tab_options(table.width = pct(100)) %>%
   cols_label(decada = "Década")
