@@ -347,6 +347,7 @@ tab_gap_asia %>%
 # Levando as tabelas a outro nível {gtExtras} ----------------------------------------------------------------------------------------------
 
 ### Produz tabelas elegantes inspiradas em grandes sites.
+### Deve utilizar a tabela pronta com gt().
 
 tab_gap_asia1 <- tab_gap_asia %>%
   gt() %>%
@@ -362,3 +363,9 @@ tab_gap_asia1 <- tab_gap_asia %>%
 
 tab_gap_asia1 %>%
   gtExtras::gt_theme_dark() 
+
+tab_gap_asia1 %>%
+  gtExtras::gt_theme_espn()
+
+tab_gap_asia1 %>%
+  gtExtras::gt_theme_dot_matrix()
