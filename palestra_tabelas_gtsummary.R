@@ -340,4 +340,5 @@ tab_gap_asia %>%
              dec_mark = ",", sep_mark = ".") %>%
   tab_options(table.width = pct(100)) %>%
   cols_label(decada = "Década", country = "Países") %>%
-  opt_interactive(use_pagination = TRUE, page_size_default = 6)
+  opt_interactive(use_pagination = TRUE, page_size_default = 6) %>%
+  opt_stylize(style = 3)
