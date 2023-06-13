@@ -29,6 +29,7 @@ install.packages("webshot2") # Salvar tabela em formato png
 install.packages("devtools")
 devtools::install_github("BaruqueRodrigues/renda.brasileirao")
 install.packages("gapminder")
+install.packages("tidyverse")
 
 # Fluxo de trabalho no {gt} ----------------------------------------------------------------------------------------------------------------
 
@@ -41,6 +42,7 @@ library(webshot2)
 library(rendas.brasileirao)
 library(gapminder)
 library(gtExtras)
+library(tidyverse)
 
 ## Carregar dados
 
@@ -397,7 +399,7 @@ dados %>%
   gtExtras::gt_plt_dist("Distribuição") %>%
   gtExtras::gt_plt_dist("Boxplot", type = "boxplot")
 
-## Exportar tabela gt de análises estatísticas
+# Exportar tabela gt de análises estatísticas ----------------------------------------------------------------------------------------------
 
 dados %>%
   lm(formula = pagante ~ renda_liq, data = .) %>%
@@ -406,3 +408,18 @@ dados %>%
   gt() %>%
   fmt_number(columns = 2:5,
              decimals = 3)
+
+mpg %>%
+  nest(-model) %>%
+  mutate(modelo = map(data, ~lm(hwy~cty, data = .)),
+         modelo = map(modelo, broom::tidy)) %>%
+  select(-data) %>%
+  unnest(modelo) %>%
+  gt()
+  
+  
+  
+  
+  
+  
+  
