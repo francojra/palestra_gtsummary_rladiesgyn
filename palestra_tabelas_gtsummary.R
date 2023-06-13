@@ -347,7 +347,6 @@ tab_gap_asia %>%
 # Levando as tabelas a outro nível {gtExtras} ----------------------------------------------------------------------------------------------
 
 ### Produz tabelas elegantes inspiradas em grandes sites.
-### Deve utilizar a tabela pronta com gt().
 
 tab_gap_asia1 <- tab_gap_asia %>%
   gt() %>%
@@ -397,3 +396,13 @@ dados %>%
   cols_label(clubem = "Clubes") %>%
   gtExtras::gt_plt_dist("Distribuição") %>%
   gtExtras::gt_plt_dist("Boxplot", type = "boxplot")
+
+## Exportar tabela gt de análises estatísticas
+
+dados %>%
+  lm(formula = pagante ~ renda_liq, data = .) %>%
+  summary() %>%
+  broom::tidy() %>% # Para ver o dataset do modelo
+  gt() %>%
+  fmt_number(columns = 2:5,
+             decimals = 3)
