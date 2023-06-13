@@ -369,3 +369,31 @@ tab_gap_asia1 %>%
 
 tab_gap_asia1 %>%
   gtExtras::gt_theme_dot_matrix()
+
+tab_gap_asia1 %>%
+  gtExtras::gt_theme_nytimes()
+
+## Adicionando highlight
+
+tab_gap_asia1 %>%
+  gtExtras::gt_theme_espn() %>%
+  gt_color_rows(
+    columns = 3,
+    domain = c(10, 200)) # Adiciona um degradê de cores dos valores altos e baixos
+
+## Criando tabelas descritivas poderosas
+
+dados %>%
+  dplyr::summarise(
+    "Mínimo do público pagante" = min(pagante, na.rm = TRUE),
+    "Média do público pagante" = mean(pagante, na.rm = TRUE),
+    "Mediana do público pagante" = median(pagante, na.rm = TRUE),
+    "Desvio padrão do público pagante" = sd(pagante, na.rm = TRUE),
+    "Máximo do público pagante" = max(pagante, na.rm = TRUE),
+    "Distribuição" = list(pagante),
+    "Boxplot" = list(pagante),
+    .by = clubem) %>%
+  gt() %>%
+  cols_label(clubem = "Clubes") %>%
+  gtExtras::gt_plt_dist("Distribuição") %>%
+  gtExtras::gt_plt_dist("Boxplot", type = "boxplot")
