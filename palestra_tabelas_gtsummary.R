@@ -294,9 +294,19 @@ tab_gap <- gapminder %>%
   dplyr::select(continent, year, lifeExp) %>%
   dplyr::mutate(decada = year - (year %% 10)) 
 View(tab_gap)
-  
+
+## Expectativa de vida média por continente
+
 tab_gap1 <- tab_gap %>%  
   dplyr::summarise(
     "Média expectativa de vida" = mean(lifeExp, na.rm = TRUE),
-    .by = continent, decada) 
+    .by = continent) 
 View(tab_gap1)
+
+## Expectativa de vida média por década
+
+tab_gap2 <- tab_gap %>%  
+  dplyr::summarise(
+    "Média expectativa de vida" = mean(lifeExp, na.rm = TRUE),
+    .by = decada) 
+View(tab_gap2)
