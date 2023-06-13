@@ -301,7 +301,7 @@ tab_gap <- tab_gap %>%
   dplyr::summarise(
     "Média expectativa de vida" = mean(lifeExp, na.rm = TRUE),
     .by = c(continent, decada)) %>%
-  dplyr::rename(continent = Continente)
+  dplyr::rename(Continente = continent)
 View(tab_gap)
 
 tab_gap %>%
