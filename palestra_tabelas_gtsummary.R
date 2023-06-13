@@ -28,6 +28,7 @@ install.packages("gtsummary")
 install.packages("webshot2") # Salvar tabela em formato png
 install.packages("devtools")
 devtools::install_github("BaruqueRodrigues/renda.brasileirao")
+install.packages("gapminder")
 
 # Fluxo de trabalho no {gt} ----------------------------------------------------------------------------------------------------------------
 
@@ -35,7 +36,10 @@ devtools::install_github("BaruqueRodrigues/renda.brasileirao")
 
 library(dplyr)
 library(gt)
+library(gtsummary)
+library(webshot2)
 library(rendas.brasileirao)
+library(gapminder)
 
 ## Carregar dados
 
@@ -281,3 +285,18 @@ tab_descritiva %>%
   tab_options(table.width = pct(100)) %>%
   cols_label(clubem = "Clubes") %>%
   gtsave(filename = "tab_descritiva.pdf") #png
+
+# Revisão ----------------------------------------------------------------------------------------------------------------------------------
+
+View(gapminder)
+
+tab_gap <- gapminder %>%
+  dplyr::select(continent, year, lifeExp) %>%
+  dplyr::mutate(decada = year - (year %% 10) + 10) 
+View(tab_gap)
+  
+  
+  dplyr::summarise(
+    "Média expectativa de vida" = mean(lifeExp, na.rm = TRUE),
+    .by = continent) 
+View(tab_gap)
